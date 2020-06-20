@@ -1,14 +1,14 @@
-import {PRODUCT_SUCCESS} from '../const/productConst'
+import {LOGIN_REQUEST, LOGIN_SUCCESS} from '../const/loginConst'
 
-export const productState ={
+export const loginState ={
     productos:[]
 }
 
 
-export default function productReducer(state=productState , action={}){
+export default function productReducer(state=loginState , action={}){
         switch(action.type)
         {
-                 case PRODUCT_SUCCESS:
+                 case LOGIN_REQUEST:
                      return{
                          ...state,
                          productos:action.productos

@@ -1,10 +1,10 @@
 import {put , takeLatest} from 'redux-saga/effects';
 import axios from 'axios';
-import {PRODUCT_REQUEST} from '../const/productConst'
-import {productSuccess} from '../actions/productActions'
+import {PRODUCT_REQUEST} from '../const/loginConst'
+import {productSuccess} from '../actions/loginAction'
 
-function* productSaga(){
-    console.log('consultando productos')
+function* loginSaga(){
+    console.log('Login saga')
     const data = yield axios.get('https://primalmkt.com/api/v1/elemento/listar')
     .then(response => response)
     .catch (err=> err.response)

@@ -1,6 +1,6 @@
-import * as types from '../const/productConst';
+import * as types from '../const/loginConst';
 
-export const productRequest=()=>(
+export const login=(email,pass)=>(
     {
         type: types.PRODUCT_REQUEST
     }

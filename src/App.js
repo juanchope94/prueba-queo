@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import history from './history';
 import Dashboard from './pages/main-dash/Dashboard'
+import Login from  './pages/login/login'
 import configureStore from './redux/configureStore'
 const store = configureStore();
 class App extends Component {
@@ -11,7 +12,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter history={history}>
-          <Dashboard />
+          <Login />
         </BrowserRouter>
       </Provider>
     );

@@ -31,7 +31,7 @@ class auxiliar extends Component {
 
 const mapDispatchToProps= dispatch =>(
     {
-        handleProductRequest : bindActionCreators(productRequest,dispatch)
+        handleLoginRequest : bindActionCreators(productRequest,dispatch)
     }
 )
 

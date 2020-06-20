@@ -1,18 +1,25 @@
-import {put , takeLatest} from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-import {PRODUCT_REQUEST} from '../const/loginConst'
-import {productSuccess} from '../actions/loginAction'
+import { LOGIN_REQUEST } from '../const/loginConst'
+import { productSuccess } from '../actions/loginAction'
 
-function* loginSaga(){
+const baseUrl = 'https://prueba_tecnica_queo.test/api/v1/'
+
+function* loginSaga(payload) {
     console.log('Login saga')
-    const data = yield axios.get('https://primalmkt.com/api/v1/elemento/listar')
-    .then(response => response)
-    .catch (err=> err.response)
-    console.log(data)
-    yield put(productSuccess(data.data.data))
+  
+    const headerParams = {
+        'Content-Type': 'application/json'
+    };
+
+    const data = yield axios.post(baseUrl + 'auth/login', { email: payload.email, password: payload.password }, {headerParams})
+        .then(response => response)
+        .catch(err => err.response)
+    
+    //yield put(productSuccess(data.data.data))
 
 }
 
-export default function* productRootSaga(){
-    yield takeLatest(PRODUCT_REQUEST,productSaga)
+export default function* loginRootSaga() {
+    yield takeLatest(LOGIN_REQUEST, loginSaga)
 }

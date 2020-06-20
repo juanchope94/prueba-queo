@@ -1,13 +1,15 @@
 import * as types from '../const/loginConst';
 
-export const login=(email,pass)=>(
+export const loginRequest = (email, password) => (
     {
-        type: types.PRODUCT_REQUEST
+        type: types.LOGIN_REQUEST,
+        email,
+        password
     }
 );
-export const productSuccess=(productos)=>(
+export const loginSuccess = (productos) => (
     {
-        type: types.PRODUCT_SUCCESS,
+        type: types.LOGIN_SUCCESS,
         productos
     }
 );

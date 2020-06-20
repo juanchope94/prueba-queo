@@ -1,11 +1,11 @@
 import createSagaMiddleware from 'redux-saga';
-import productReducer from './store/productReducer';
+import loginReducer from './store/loginReducer';
 import sagas from './sagas/index';
 import {createStore, applyMiddleware} from 'redux';
 
 const sagaMiddleware= createSagaMiddleware();
 export default function configureStore(){
-    const store = createStore(productReducer , applyMiddleware(sagaMiddleware));
+    const store = createStore(loginReducer , applyMiddleware(sagaMiddleware));
 
     sagaMiddleware.run(sagas);
     store.injectedReducers ={};

@@ -3,10 +3,9 @@ import axios from 'axios';
 import { LOGIN_REQUEST } from '../const/loginConst'
 import { loginSuccess } from '../actions/loginAction'
 
-const baseUrl = 'https://queo.venoudev.com/api/v1/'
+const baseUrl = 'https://queoapp.venoudev.com/api/v1/'
 
 function* loginSaga(payload) {
-    console.log('Login saga')
 
     const headerParams = {
         'Content-Type': 'application/json'
@@ -15,6 +14,7 @@ function* loginSaga(payload) {
     const data = yield axios.post(baseUrl + 'auth/login', { email: payload.email, password: payload.password }, { headerParams })
         .then(response => response)
         .catch(err => err.response)
+        console.log(data)
     switch (data.status) {
         case 200:
             console.log(data)

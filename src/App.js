@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import history from './history';
 import Dashboard from './pages/main-dash/Dashboard'
 import Login from  './pages/login/login'
-import { Route, Switch, BrowserRouter,withRouter, Redirect } from 'react-router-dom';
+import { Route, BrowserRouter, Redirect } from 'react-router-dom';
 import configureStore from './redux/configureStore'
 const store = configureStore();
 class App extends Component {

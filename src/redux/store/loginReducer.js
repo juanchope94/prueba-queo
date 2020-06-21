@@ -3,6 +3,7 @@ import { LOGIN_REQUEST, LOGIN_SUCCESS } from '../const/loginConst'
 export const loginState = {
     token:"",
     rol:[],
+    isAutenticated:false,
     loading:false
 }
 
@@ -20,6 +21,7 @@ export default function loginReducer(state = loginState, action = {}) {
                 ...state,
                 token:action.token,
                 rol:action.roles,
+                isAutenticated:true,
                 loading:false
               
             }

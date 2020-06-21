@@ -22,7 +22,10 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import CreateEmployee from './../create-employee/create-employee';
-import { Route, Switch,Link } from 'react-router-dom';
+import CreateCompany from './../create-company/create-company';
+import ListEmployee from './../list-employee/list-employee';
+import ListCompany from './../list-company/list-company';
+import { Route, Switch, Link } from 'react-router-dom';
 
 
 
@@ -183,18 +186,12 @@ export default function Dashboard() {
                 <Switch>
                   <Route path="/Dashboard" exact component={Chart} />
                   <Route path="/Dashboard/CreateEmployee" exact component={CreateEmployee} />
-                  <Route path="/Dashboard/ListEmployees" exact component={CreateEmployee} />  
-                  <Route path="/Dashboard/CreateCompany" exact component={CreateEmployee} />
-                  <Route path="/Dashboard/ListCompany" exact component={CreateEmployee} />  
-
-
-
-
+                  <Route path="/Dashboard/ListEmployees" exact component={ListEmployee} />
+                  <Route path="/Dashboard/CreateCompany" exact component={CreateCompany} />
+                  <Route path="/Dashboard/ListCompanys" exact component={ListCompany} />
                 </Switch>
               </Paper>
             </Grid>
-            {/* Recent Deposits */}
-
           </Grid>
           <Box pt={4}>
             <Copyright />

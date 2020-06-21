@@ -51,8 +51,8 @@ const mainListItems = (props) => {
             <ListItemIcon >
               <AddCircleOutlineIcon />
             </ListItemIcon>
-            <Link to={{ pathname: `/Dashboard/CreateEmployee` }} style={{ textDecoration: "none",color:"black" }}>
-              <ListItemText primary="crear empleados" />
+            <Link to={{ pathname: `/Dashboard/CreateEmployee` }} style={{ textDecoration: "none", color: "black" }}>
+              <ListItemText primary="Crear empleados" />
             </Link>
           </ListItem>
         </List>
@@ -61,7 +61,9 @@ const mainListItems = (props) => {
             <ListItemIcon >
               <ListIcon />
             </ListItemIcon>
-            <ListItemText primary="Listar empleados" />
+            <Link to={{ pathname: `/Dashboard/ListEmployees` }} style={{ textDecoration: "none", color: "black" }}>
+              <ListItemText primary="Listar empleados" />
+            </Link>
           </ListItem>
         </List>
       </Collapse>
@@ -78,7 +80,9 @@ const mainListItems = (props) => {
             <ListItemIcon>
               <AddCircleOutlineIcon />
             </ListItemIcon>
-            <ListItemText primary="Crear empresas" />
+            <Link to={{ pathname: `/Dashboard/CreateCompany` }} style={{ textDecoration: "none", color: "black" }}>
+              <ListItemText primary="Crear empresas" />
+            </Link>
           </ListItem>
         </List>
         <List component="div" disablePadding>
@@ -86,12 +90,14 @@ const mainListItems = (props) => {
             <ListItemIcon>
               <ListIcon />
             </ListItemIcon>
-            <ListItemText primary="Listar empresas" />
+            <Link to={{ pathname: `/Dashboard/ListCompanys` }} style={{ textDecoration: "none", color: "black" }}>
+              <ListItemText primary="Listar empresas" />
+            </Link>
           </ListItem>
         </List>
       </Collapse>
 
-    </div>
+    </div >
   );
 }
 export default mainListItems;

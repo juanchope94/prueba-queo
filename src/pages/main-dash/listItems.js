@@ -1,12 +1,11 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import DashboardIcon from '@material-ui/icons/Dashboard';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
 import Collapse from '@material-ui/core/Collapse';
 import List from '@material-ui/core/List';
 import ApartmentIcon from '@material-ui/icons/Apartment';
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const mainListItems =(props)=>{
+const mainListItems = (props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const [open2, setOpen2] = React.useState(true);
@@ -37,9 +36,9 @@ const mainListItems =(props)=>{
   const handleClick2 = () => {
     setOpen2(!open2);
   };
-  return(
-  <div>
-     <ListItem button onClick={handleClick2}>
+  return (
+    <div>
+      <ListItem button onClick={handleClick2}>
         <ListItemIcon style={{ marginRight: '-30px' }}>
           <WorkIcon />
         </ListItemIcon>
@@ -52,7 +51,9 @@ const mainListItems =(props)=>{
             <ListItemIcon >
               <AddCircleOutlineIcon />
             </ListItemIcon>
-            <ListItemText primary="crear empleados" />
+            <Link to={{ pathname: `/Dashboard/CreateEmployee` }} style={{ textDecoration: "none",color:"black" }}>
+              <ListItemText primary="crear empleados" />
+            </Link>
           </ListItem>
         </List>
         <List component="div" disablePadding>
@@ -64,7 +65,7 @@ const mainListItems =(props)=>{
           </ListItem>
         </List>
       </Collapse>
-    <ListItem button onClick={handleClick}>
+      <ListItem button onClick={handleClick}>
         <ListItemIcon style={{ marginRight: '-30px' }}>
           <ApartmentIcon />
         </ListItemIcon>
@@ -89,8 +90,8 @@ const mainListItems =(props)=>{
           </ListItem>
         </List>
       </Collapse>
-    
-  </div>
+
+    </div>
   );
 }
 export default mainListItems;

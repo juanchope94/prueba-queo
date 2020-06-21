@@ -14,14 +14,17 @@ import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import MainListItems  from './listItems';
+import MainListItems from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import CreateEmployee from './../create-employee/create-employee';
+import { Route, Switch,Link } from 'react-router-dom';
+
+
 
 function Copyright() {
   return (
@@ -113,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 240,
+    height: '40rem',
   },
 }));
 
@@ -131,7 +134,7 @@ export default function Dashboard() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="absolute" style={{backgroundColor:"#FF8000"}} className={clsx(classes.appBar, open && classes.appBarShift)}>
+      <AppBar position="absolute" style={{ backgroundColor: "#FF8000" }} className={clsx(classes.appBar, open && classes.appBarShift)}>
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -143,7 +146,9 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard Queo
+            <Link to={{ pathname: `/Dashboard` }} style={{ textDecoration: "none", color: "white" }}>
+              Dashboard Queo
+             </Link>
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
@@ -165,7 +170,7 @@ export default function Dashboard() {
           </IconButton>
         </div>
         <Divider />
-        <List><MainListItems/></List>
+        <List><MainListItems /></List>
         <Divider />
       </Drawer>
       <main className={classes.content}>
@@ -173,23 +178,23 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12} md={8} lg={12}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <Switch>
+                  <Route path="/Dashboard" exact component={Chart} />
+                  <Route path="/Dashboard/CreateEmployee" exact component={CreateEmployee} />
+                  <Route path="/Dashboard/ListEmployees" exact component={CreateEmployee} />  
+                  <Route path="/Dashboard/CreateCompany" exact component={CreateEmployee} />
+                  <Route path="/Dashboard/ListCompany" exact component={CreateEmployee} />  
+
+
+
+
+                </Switch>
               </Paper>
             </Grid>
             {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits />
-              </Paper>
-            </Grid>
-            {/* Recent Orders */}
-            <Grid item xs={12}>
-              <Paper className={classes.paper}>
-                <Orders />
-              </Paper>
-            </Grid>
+
           </Grid>
           <Box pt={4}>
             <Copyright />

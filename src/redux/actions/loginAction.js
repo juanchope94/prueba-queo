@@ -7,9 +7,10 @@ export const loginRequest = (email, password) => (
         password
     }
 );
-export const loginSuccess = (productos) => (
+export const loginSuccess = (token,roles) => (
     {
         type: types.LOGIN_SUCCESS,
-        productos
+        token,
+        roles
     }
 );

@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { loginRequest } from '../../redux/actions/loginAction'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function Copyright() {
     return (
@@ -35,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+    },
+    root: {
+        display: 'flex',
+        '& > * + *': {
+            marginLeft: theme.spacing(2),
+        },
     },
     avatar: {
         margin: theme.spacing(1),
@@ -90,16 +97,19 @@ const SignIn = (props) => {
                         autoComplete="current-password"
                         onChange={() => setPassword(event.target.value)}
                     />
+                    {props.loginLoad ?
+                        <CircularProgress  style={{ color: "#FF8000", marginLeft:"42%"}}/>
+                        :
+                        <Button
+                            type="submit"
+                            fullWidth
+                            style={{ backgroundColor: "#FF8000", color: "white" }}
+                            className={classes.submit}
 
-                    <Button
-                        type="submit"
-                        fullWidth
-                        style={{ backgroundColor: "#FF8000", color: "white" }}
-                        className={classes.submit}
+                        >
+                            Iniciar sesión
+                      </Button>}
 
-                    >
-                        Iniciar sesión
-          </Button>
                 </form>
                 <Grid container>
                     <Grid item xs>
@@ -127,4 +137,11 @@ const mapDispatchToProps = dispatch => (
         handleLoginRequest: bindActionCreators(loginRequest, dispatch)
     }
 )
-export default connect(null, mapDispatchToProps)(SignIn);
+
+const mapStateToProps = state => {
+    return {
+        loginLoad: state.loading
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

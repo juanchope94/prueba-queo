@@ -1,7 +1,9 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS } from '../const/loginConst'
 
 export const loginState = {
-    productos: []
+    token:"",
+    rol:[],
+    loading:false
 }
 
 
@@ -10,11 +12,15 @@ export default function loginReducer(state = loginState, action = {}) {
         case LOGIN_REQUEST:
             return {
                 ...state,
+                loading:true
             }
 
         case LOGIN_SUCCESS:
             return {
                 ...state,
+                token:action.token,
+                rol:action.roles,
+                loading:false
               
             }
 

@@ -8,6 +8,7 @@ import { registerCompanyRequest } from '../../redux/actions/companyAction'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Modal from './../../components/modalCreateCompany/modalCreateCompany'
 
 
 
@@ -50,6 +51,7 @@ function OutlinedTextFields(props) {
 
     return (
         <div  >
+            <Modal open={props.open} messages={props.messages}/>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <h1   >Registro empresa</h1>
             </div>
@@ -91,7 +93,7 @@ function OutlinedTextFields(props) {
 
 
                 {props.loginLoad ?
-                    <CircularProgress style={{ color: "#FF8000"}} />
+                    <CircularProgress  style={{ color: "#FF8000", marginRight:"50%", marginLeft:"45%"}}   />
                     :
                     <Button
                         type="submit"
@@ -117,6 +119,8 @@ const mapDispatchToProps = dispatch => (
 const mapStateToProps = state => {
     return {
         loginLoad: state.companyReducer.loading,
+        open : state.companyReducer.openModal,
+        messages : state.companyReducer.messages
     }
 }
 

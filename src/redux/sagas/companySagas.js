@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 import { REGISTER_COMPANY_REQUEST, LIST_COMPANY_REQUEST } from '../const/companyConst'
-import { registerCompanySuccess, listCompanySuccess } from '../actions/companyAction'
+import { registerCompanySuccess,registerCompanyFailed, listCompanySuccess } from '../actions/companyAction'
 
 const baseUrl = 'https://appprueba.venoudev.com/api/v1/company'
 
@@ -19,9 +19,11 @@ function* registerCompanySaga(payload) {
    switch (data.status) {
       case 200:
          console.log(data);
-         yield put(registerCompanySuccess())
+         yield put(registerCompanySuccess(data.data.messages))
          break;
-      case 401:
+      case 400:
+         console.log(data);
+         yield put(registerCompanyFailed(data.data.errors))
          break;
       default:
          break;

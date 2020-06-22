@@ -6,12 +6,21 @@ export const registerCompanyRequest = (values) => (
         values
     }
 );
-export const registerCompanySuccess = () => (
+export const registerCompanyFailed = (messages) => (
     {
-        type: types.REGISTER_COMPANY_SUCCESS,
+        type: types.REGISTER_COMPANY_FAILED,
+        messages
        
     }
 );
+export const registerCompanySuccess = (messages) => (
+    {
+        type: types.REGISTER_COMPANY_SUCCESS,
+        messages
+       
+    }
+);
+
 
 export const listCompanyRequest = () => (
     {
@@ -23,6 +32,12 @@ export const listCompanySuccess = (companys) => (
     {
         type: types.LIST_COMPANY_SUCCESS,
         companys
+    }
+);
+export const closeModal = () => (
+    {
+        type: types.CLOSE_MODAL,
+
     }
 );
 

@@ -33,11 +33,11 @@ import { Route, Switch, Link } from 'react-router-dom';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-
-        Your Website
-
-      {new Date().getFullYear()}
+      {'Copyright ©  '}
+      <a href='https://queoaccess.com/' style={{textDecoration:'none', color:'black'}}>
+        Queo
+        </a>
+      {' ' + new Date().getFullYear()}
       {'.'}
     </Typography>
   );
@@ -100,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
     }),
     width: theme.spacing(7),
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9),
+      width: theme.spacing(0),
     },
   },
   appBarSpacer: theme.mixins.toolbar,
@@ -156,7 +156,7 @@ function Dashboard(props) {
           </Typography>
           <IconButton color="inherit">
 
-            <ExitToAppIcon onClick={()=>props.handleLogoutRequest()}/>
+            <ExitToAppIcon onClick={() => props.handleLogoutRequest()} />
 
           </IconButton>
         </Toolbar>
@@ -203,7 +203,7 @@ function Dashboard(props) {
 }
 const mapDispatchToProps = dispatch => (
   {
-      handleLogoutRequest: bindActionCreators(logoutRequest, dispatch)
+    handleLogoutRequest: bindActionCreators(logoutRequest, dispatch)
   }
 )
 

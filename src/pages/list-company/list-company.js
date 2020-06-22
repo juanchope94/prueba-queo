@@ -18,8 +18,7 @@ import ViewColumn from '@material-ui/icons/ViewColumn';
 import { forwardRef } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { listCompanyRequest } from '../../redux/actions/companyAction'
-import Logo from './../../assets/queoLogo.png'
+import { listCompanyRequest, deleteCompanyRequest } from '../../redux/actions/companyAction'
 
 
 
@@ -72,7 +71,7 @@ function MaterialTableDemo(props) {
             icons={tableIcons}
             title="Lista de empresas"
             columns={state.columns}
-            isLoading={false}
+            isLoading={props.loadTab}
             data={props.companys}
             detailPanel={rowData => {
                 console.log(rowData)
@@ -112,12 +111,8 @@ function MaterialTableDemo(props) {
                     }),
                 onRowDelete: oldData =>
                     new Promise(resolve => {
-                        setTimeout(() => {
-                            resolve();
-                            const data = [...state.data];
-                            data.splice(data.indexOf(oldData), 1);
-                            setState({ ...state, data });
-                        }, 600);
+                        resolve();
+                        props.handleDeleteRequest(oldData.id)
                     }),
             }}
         />
@@ -126,13 +121,16 @@ function MaterialTableDemo(props) {
 
 const mapDispatchToProps = dispatch => (
     {
-        handleListRequest: bindActionCreators(listCompanyRequest, dispatch)
+        handleListRequest: bindActionCreators(listCompanyRequest, dispatch),
+        handleDeleteRequest: bindActionCreators(deleteCompanyRequest, dispatch)
+
     }
 )
 
 const mapStateToProps = state => {
     return {
         companys: state.companyReducer.companys,
+        loadTab:  state.companyReducer.loadTable
     }
 }
 

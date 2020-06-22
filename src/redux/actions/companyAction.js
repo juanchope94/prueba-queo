@@ -20,6 +20,18 @@ export const registerCompanySuccess = (messages) => (
        
     }
 );
+export const deleteCompanyRequest = (id) => (
+    {
+        type: types.DELETE_COMPANY_REQUEST,
+        id
+    }
+);
+export const deleteCompanySuccess = () => (
+    {
+        type: types.DELETE_COMPANY_SUCCESS,
+        
+    }
+);
 
 
 export const listCompanyRequest = () => (

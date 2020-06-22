@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { registerCompanyRequest } from '../../redux/actions/companyAction'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 
@@ -30,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
- function OutlinedTextFields(props) {
+function OutlinedTextFields(props) {
     const classes = useStyles();
     const [values, setValues] = React.useState({
         name: '',
@@ -49,7 +50,7 @@ const useStyles = makeStyles(theme => ({
 
     return (
         <div  >
-            <div style={{display:'flex', justifyContent:'center'}}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <h1   >Registro empresa</h1>
             </div>
             <form onSubmit={handleRegisterSubmit} className={classes.container} autoComplete="off">
@@ -88,15 +89,20 @@ const useStyles = makeStyles(theme => ({
                     variant="outlined"
                 />
 
-                <Button
-                    type="submit"
-                    fullWidth
-                    style={{ width: "50%", backgroundColor: "#FF8000", color: "white" }}
-                    className={classes.submit}
 
-                >
-                    Registrar
-                      </Button>
+                {props.loginLoad ?
+                    <CircularProgress style={{ color: "#FF8000", marginLeft: "42%" }} />
+                    :
+                    <Button
+                        type="submit"
+                        fullWidth
+                        style={{ width: "50%", backgroundColor: "#FF8000", color: "white" }}
+                        className={classes.submit}
+
+                    >
+                        Registrar
+                      </Button>}
+
 
             </form>
         </div>
@@ -110,7 +116,7 @@ const mapDispatchToProps = dispatch => (
 
 const mapStateToProps = state => {
     return {
-      
+        loginLoad: state.companyReducer.loading,
     }
 }
 

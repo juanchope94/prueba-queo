@@ -3,6 +3,7 @@ import { REGISTER_COMPANY_REQUEST,REGISTER_COMPANY_SUCCESS} from '../const/compa
 
 
 export const companyState = {
+    loading:false
 
 }
 
@@ -12,12 +13,14 @@ export default function companyReducer(state = companyState, action = {}) {
         case REGISTER_COMPANY_REQUEST:
             return {
                 ...state,
+                loading:true
              
             }
 
         case REGISTER_COMPANY_SUCCESS:
             return {
                 ...state,
+                loading:false
            
 
             }

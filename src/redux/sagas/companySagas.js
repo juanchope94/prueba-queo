@@ -21,8 +21,7 @@ function* registerCompanySaga(payload) {
    switch (data.status) {
       case 200:
          console.log(data);
-         localStorage.setItem('token', data.data.data.access_token);
-         //  yield put(loginSuccess(data.data.data.access_token, data.data.data.roles))
+         yield put(registerCompanySuccess())
          break;
       case 401:
          break;

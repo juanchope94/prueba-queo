@@ -8,7 +8,7 @@ export const registerCompanyRequest = (values) => (
 );
 export const registerCompanySuccess = () => (
     {
-        type: types.REGISTER_SUCCESS,
+        type: types.REGISTER_COMPANY_SUCCESS,
        
     }
 );

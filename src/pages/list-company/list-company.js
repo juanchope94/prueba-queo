@@ -50,7 +50,7 @@ function MaterialTableDemo(props) {
             { title: 'Name', field: 'name' },
             { title: 'Email', field: 'email' },
             { title: 'Website', field: 'website' },
-          
+
         ],
         data: [
             { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
@@ -76,7 +76,18 @@ function MaterialTableDemo(props) {
             data={props.companys}
             detailPanel={rowData => {
                 console.log(rowData)
-                return <img src={rowData.logo} ></img>
+                return (
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        {rowData.logo !== null ?
+                            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                <h1>Logo: &nbsp;&nbsp;&nbsp; </h1>
+                                <img src={rowData.logo} style={{ width: '200px', height: "auto" }} />
+                            </div>
+                            :
+                            <h1>No tiene logo</h1>
+                        }
+
+                    </div>)
 
 
             }}

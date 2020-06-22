@@ -15,6 +15,13 @@ export const loginSuccess = (token, roles) => (
     }
 );
 
+export const loginFailed = (messages) => (
+    {
+        type: types.LOGIN_FAILED,
+        messages
+    }
+);
+
 export const logoutRequest = () => (
     {
         type: types.LOGOUT_REQUEST,
@@ -24,6 +31,13 @@ export const logoutRequest = () => (
 export const logoutSuccess = () => (
     {
         type: types.LOGOUT_SUCCESS,
+
+    }
+);
+
+export const closeModal = () => (
+    {
+        type: types.CLOSE_MODAL,
 
     }
 );

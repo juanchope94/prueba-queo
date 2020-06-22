@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS , LOGOUT_SUCCESS} from '../const/loginConst'
+import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILED, LOGOUT_SUCCESS, CLOSE_MODAL } from '../const/loginConst'
 
 
 
@@ -6,7 +6,9 @@ export const loginState = {
     token: "",
     rol: [],
     isAutenticated: false,
-    loading: false
+    loading: false,
+    messages: [],
+    openModal: false
 }
 
 
@@ -27,13 +29,27 @@ export default function loginReducer(state = loginState, action = {}) {
                 loading: false
 
             }
+        case LOGIN_FAILED:
+            return {
+                ...state,
+                loading: false,
+                messages: action.messages,
+                openModal: true
+            }
         case LOGOUT_SUCCESS:
             return {
                 ...state,
                 token: '',
-                rol: [],               
+                rol: [],
                 isAutenticated: false,
-              
+
+
+            }
+        case CLOSE_MODAL:
+            return {
+                ...state,
+                openModal: false
+
 
             }
 

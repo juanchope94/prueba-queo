@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 import { LOGIN_REQUEST, LOGOUT_REQUEST } from '../const/loginConst'
-import { loginSuccess, logoutSuccess } from '../actions/loginAction'
+import { loginSuccess,loginFailed, logoutSuccess } from '../actions/loginAction'
 
 const baseUrl = 'https://appprueba.venoudev.com/api/v1/auth'
 
@@ -21,7 +21,9 @@ function* loginSaga(payload) {
             localStorage.setItem('token', data.data.data.access_token);
             yield put(loginSuccess(data.data.data.access_token, data.data.data.roles))
             break;
-        case 401:
+        case 400:
+            console.log(data);
+            yield put(loginFailed(data.data.messages))
             break;
         default:
             break;

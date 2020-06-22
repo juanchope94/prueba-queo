@@ -48,7 +48,7 @@ function MaterialTableDemo(props) {
             { title: 'Name', field: 'name' },
             { title: 'Email', field: 'email' },
             { title: 'Website', field: 'website' },
-            { title: 'Logo', field: 'logo', type:"url" },
+            { title: 'Logo', field: 'logo', type:<img/> },
         ],
         data: [
             { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },

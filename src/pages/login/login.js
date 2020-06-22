@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import { loginRequest } from '../../redux/actions/loginAction'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import  { Redirect } from 'react-router-dom'
+import Modal from './../../components/modalLogin/modalLogin'
 
 function Copyright() {
     return (
@@ -70,6 +71,7 @@ const SignIn = (props) => {
 
     return (
         <Container component="main" maxWidth="xs">
+            <Modal open={props.openModal}/>
             <CssBaseline />
             <div className={classes.paper}>
 
@@ -84,6 +86,7 @@ const SignIn = (props) => {
                         id="email"
                         label="Email Address"
                         name="email"
+                        type="email"
                         autoComplete="email"
                         autoFocus
                         onChange={() => setEmail(event.target.value)}
@@ -144,7 +147,8 @@ const mapDispatchToProps = dispatch => (
 const mapStateToProps = state => {
     return {
         loginLoad: state.loginReducer.loading,
-        tokenLogin: state.loginReducer.token
+        tokenLogin: state.loginReducer.token,
+        openModal: state.loginReducer.openModal
     }
 }
 

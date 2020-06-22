@@ -91,7 +91,7 @@ function OutlinedTextFields(props) {
 
 
                 {props.loginLoad ?
-                    <CircularProgress style={{ color: "#FF8000", marginLeft: "42%" }} />
+                    <CircularProgress style={{ color: "#FF8000"}} />
                     :
                     <Button
                         type="submit"

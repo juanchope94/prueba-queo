@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MaterialTable from 'material-table';
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
@@ -16,6 +16,10 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import { forwardRef } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { listCompanyRequest } from '../../redux/actions/companyAction'
+
 
 const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -38,17 +42,13 @@ const tableIcons = {
 };
 
 
-export default function MaterialTableDemo() {
+function MaterialTableDemo(props) {
     const [state, setState] = React.useState({
         columns: [
             { title: 'Name', field: 'name' },
-            { title: 'Surname', field: 'surname' },
-            { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-            {
-                title: 'Birth Place',
-                field: 'birthCity',
-                lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-            },
+            { title: 'Email', field: 'email' },
+            { title: 'Website', field: 'website' },
+            { title: 'Logo', field: 'logo', type:"url" },
         ],
         data: [
             { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
@@ -61,12 +61,16 @@ export default function MaterialTableDemo() {
         ],
     });
 
+    useEffect(() => {
+        props.handleListRequest();
+    });
+
     return (
         <MaterialTable
             icons={tableIcons}
             title="Lista de empresas"
             columns={state.columns}
-            data={state.data}
+            data={props.companys}
             editable={{
                 onRowAdd: newData =>
                     new Promise(resolve => {
@@ -99,3 +103,17 @@ export default function MaterialTableDemo() {
         />
     );
 }
+
+const mapDispatchToProps = dispatch => (
+    {
+        handleListRequest: bindActionCreators(listCompanyRequest, dispatch)
+    }
+)
+
+const mapStateToProps = state => {
+    return {
+        companys: state.companyReducer.companys,
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MaterialTableDemo);

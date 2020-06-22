@@ -13,3 +13,17 @@ export const registerCompanySuccess = () => (
     }
 );
 
+export const listCompanyRequest = () => (
+    {
+        type: types.LIST_COMPANY_REQUEST,
+        
+    }
+);
+export const listCompanySuccess = (companys) => (
+    {
+        type: types.LIST_COMPANY_SUCCESS,
+        companys
+    }
+);
+
+

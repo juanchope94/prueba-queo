@@ -66,7 +66,7 @@ function* deleteCompanySaga(payload) {
       case 200:
          console.log(data)
          yield put(listCompanyRequest())
-         yield put(deleteCompanySuccess())
+         yield put(deleteCompanySuccess(data.data.messages))
          break;
       case 401:
          break;

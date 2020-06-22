@@ -59,7 +59,9 @@ export default function companyReducer(state = companyState, action = {}) {
         case DELETE_COMPANY_SUCCESS:
             return {
                 ...state,
-                loadTable: false
+                loadTable: false,
+                openModal: true,
+                messages: action.messages
             }
         case CLOSE_MODAL:
             return {

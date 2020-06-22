@@ -26,9 +26,10 @@ export const deleteCompanyRequest = (id) => (
         id
     }
 );
-export const deleteCompanySuccess = () => (
+export const deleteCompanySuccess = (messages) => (
     {
         type: types.DELETE_COMPANY_SUCCESS,
+        messages
         
     }
 );

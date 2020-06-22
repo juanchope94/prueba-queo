@@ -19,7 +19,7 @@ import { forwardRef } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { listCompanyRequest, deleteCompanyRequest } from '../../redux/actions/companyAction'
-
+import Modal from './../../components/modalCreateCompany/modalCreateCompany'
 
 
 const tableIcons = {
@@ -67,55 +67,59 @@ function MaterialTableDemo(props) {
     }, []);
 
     return (
-        <MaterialTable
-            icons={tableIcons}
-            title="Lista de empresas"
-            columns={state.columns}
-            isLoading={props.loadTab}
-            data={props.companys}
-            detailPanel={rowData => {
-                console.log(rowData)
-                return (
-                    <div style={{ display: 'flex', justifyContent: 'center' }}>
-                        {rowData.logo !== null ?
-                            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                                <h1>Logo: &nbsp;&nbsp;&nbsp; </h1>
-                                <img src={rowData.logo} style={{ width: '200px', height: "auto" }} />
-                            </div>
-                            :
-                            <h1>No tiene logo</h1>
-                        }
+        <div>
+            <Modal open={props.open} messages={props.messages} />
 
-                    </div>)
+            <MaterialTable
+                icons={tableIcons}
+                title="Lista de empresas"
+                columns={state.columns}
+                isLoading={props.loadTab}
+                data={props.companys}
+                detailPanel={rowData => {
+                    console.log(rowData)
+                    return (
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            {rowData.logo !== null ?
+                                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                                    <h1>Logo: &nbsp;&nbsp;&nbsp; </h1>
+                                    <img src={rowData.logo} style={{ width: '200px', height: "auto" }} />
+                                </div>
+                                :
+                                <h1>No tiene logo</h1>
+                            }
+
+                        </div>)
 
 
-            }}
-            editable={{
-                onRowAdd: newData =>
-                    new Promise(resolve => {
-                        setTimeout(() => {
+                }}
+                editable={{
+                    onRowAdd: newData =>
+                        new Promise(resolve => {
+                            setTimeout(() => {
+                                resolve();
+                                const data = [...state.data];
+                                data.push(newData);
+                                setState({ ...state, data });
+                            }, 600);
+                        }),
+                    onRowUpdate: (newData, oldData) =>
+                        new Promise(resolve => {
+                            setTimeout(() => {
+                                resolve();
+                                const data = [...state.data];
+                                data[data.indexOf(oldData)] = newData;
+                                setState({ ...state, data });
+                            }, 600);
+                        }),
+                    onRowDelete: oldData =>
+                        new Promise(resolve => {
                             resolve();
-                            const data = [...state.data];
-                            data.push(newData);
-                            setState({ ...state, data });
-                        }, 600);
-                    }),
-                onRowUpdate: (newData, oldData) =>
-                    new Promise(resolve => {
-                        setTimeout(() => {
-                            resolve();
-                            const data = [...state.data];
-                            data[data.indexOf(oldData)] = newData;
-                            setState({ ...state, data });
-                        }, 600);
-                    }),
-                onRowDelete: oldData =>
-                    new Promise(resolve => {
-                        resolve();
-                        props.handleDeleteRequest(oldData.id)
-                    }),
-            }}
-        />
+                            props.handleDeleteRequest(oldData.id)
+                        }),
+                }}
+            />
+        </div>
     );
 }
 
@@ -130,7 +134,9 @@ const mapDispatchToProps = dispatch => (
 const mapStateToProps = state => {
     return {
         companys: state.companyReducer.companys,
-        loadTab:  state.companyReducer.loadTable
+        loadTab: state.companyReducer.loadTable,
+        open : state.companyReducer.openModal,
+        messages : state.companyReducer.messages
     }
 }
 

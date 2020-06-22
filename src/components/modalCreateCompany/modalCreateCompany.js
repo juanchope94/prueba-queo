@@ -39,6 +39,10 @@ function AlertDialog(props) {
                             {
                                 return <h4 style={{color:'black'}}>- Error: Formato invalido en el website, ejemplo de un formato correcto: https://www.queo.com</h4>
                             }
+                            if(item.code_message === '[DELETED]')
+                            {
+                                return <h4 style={{color:'black'}}>La compañia se elimino correctamente!</h4>
+                            }
                            
                         })}
           </DialogContentText>

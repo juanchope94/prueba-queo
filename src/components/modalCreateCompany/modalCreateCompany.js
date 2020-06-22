@@ -33,11 +33,11 @@ function AlertDialog(props) {
                             }
                             if(item.code_message === '[ERR_UNIQUE]')
                             {
-                                return <h4 style={{color:'black'}}>- El email ya se encuentra registado</h4>
+                                return <h4 style={{color:'black'}}>- Error: El email ya se encuentra registado</h4>
                             }
                             if(item.code_message === '[NOTHING]')
                             {
-                                return <h4 style={{color:'black'}}>- Formato invalido en el website, ejemplo de un formato correcto: https://www.queo.com</h4>
+                                return <h4 style={{color:'black'}}>- Error: Formato invalido en el website, ejemplo de un formato correcto: https://www.queo.com</h4>
                             }
                            
                         })}

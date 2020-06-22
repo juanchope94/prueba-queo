@@ -16,15 +16,16 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import MainListItems from './listItems';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Chart from './Chart';
-import Deposits from './Deposits';
-import Orders from './Orders';
 import CreateEmployee from './../create-employee/create-employee';
 import CreateCompany from './../create-company/create-company';
 import ListEmployee from './../list-employee/list-employee';
 import ListCompany from './../list-company/list-company';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { logoutRequest } from '../../redux/actions/loginAction'
 import { Route, Switch, Link } from 'react-router-dom';
 
 
@@ -33,9 +34,9 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+
         Your Website
-      </Link>{' '}
+
       {new Date().getFullYear()}
       {'.'}
     </Typography>
@@ -123,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+function Dashboard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -154,9 +155,9 @@ export default function Dashboard() {
              </Link>
           </Typography>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
+
+            <ExitToAppIcon onClick={()=>props.handleLogoutRequest()}/>
+
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -180,7 +181,6 @@ export default function Dashboard() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            {/* Chart */}
             <Grid item xs={12} md={8} lg={12}>
               <Paper className={fixedHeightPaper}>
                 <Switch>
@@ -201,3 +201,12 @@ export default function Dashboard() {
     </div>
   );
 }
+const mapDispatchToProps = dispatch => (
+  {
+      handleLogoutRequest: bindActionCreators(logoutRequest, dispatch)
+  }
+)
+
+
+
+export default connect(null, mapDispatchToProps)(Dashboard);

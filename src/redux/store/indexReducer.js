@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
 
 
 
@@ -14,5 +13,5 @@ export default function createReducer(injectedReducers={}){
         loginReducer,
          ...injectedReducers
     })
-  return mergeWithRouterState(rootReducer);
+  return rootReducer;
 }

@@ -112,7 +112,7 @@ const SignIn = (props) => {
                         >
                             Iniciar sesión
                       </Button>}
-                        {props.tokenLogin !='' ? <Redirect to='/Dashboard'/> : null}
+                        {props.tokenLogin !=='' ? <Redirect to='/Dashboard'/> : null}
                 </form>
                 <Grid container>
                     <Grid item xs>
@@ -143,8 +143,8 @@ const mapDispatchToProps = dispatch => (
 
 const mapStateToProps = state => {
     return {
-        loginLoad: state.loading,
-        tokenLogin: state.token
+        loginLoad: state.loginReducer.loading,
+        tokenLogin: state.loginReducer.token
     }
 }
 

@@ -1,9 +1,12 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-import { LOGIN_REQUEST } from '../const/loginConst'
-import { loginSuccess } from '../actions/loginAction'
+import { LOGIN_REQUEST, LOGOUT_REQUEST } from '../const/loginConst'
+import { loginSuccess, logoutSuccess } from '../actions/loginAction'
 
-const baseUrl = 'https://queoapp.venoudev.com/api/v1/'
+const baseUrl = 'https://queoapp.venoudev.com/api/v1/auth'
+const getToken = () => {
+    return localStorage.getItem('token');
+}
 
 function* loginSaga(payload) {
 
@@ -11,14 +14,37 @@ function* loginSaga(payload) {
         'Content-Type': 'application/json'
     };
 
-    const data = yield axios.post(baseUrl + 'auth/login', { email: payload.email, password: payload.password }, { headerParams })
+    const data = yield axios.post(baseUrl + '/login', { email: payload.email, password: payload.password }, { headerParams })
         .then(response => response)
         .catch(err => err.response)
-        console.log(data)
+    switch (data.status) {
+        case 200:
+            console.log(data);
+            localStorage.setItem('token', data.data.data.access_token);
+            yield put(loginSuccess(data.data.data.access_token, data.data.data.roles))
+            break;
+        case 401:
+            break;
+        default:
+            break;
+    }
+
+
+}
+
+function* logoutSaga() {
+    const headers = {
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+        Accept: 'application/json'
+    };
+    const data = yield axios.post(baseUrl + '/logout', {}, { headers })
+        .then(response => response)
+        .catch(err => err.response)
     switch (data.status) {
         case 200:
             console.log(data)
-                yield put(loginSuccess(data.data.data.access_token,data.data.data.roles))
+            localStorage.removeItem('token')
+            yield put(logoutSuccess())
             break;
         case 401:
             break;
@@ -30,5 +56,6 @@ function* loginSaga(payload) {
 }
 
 export default function* loginRootSaga() {
-    yield takeLatest(LOGIN_REQUEST, loginSaga)
+    yield takeLatest(LOGIN_REQUEST, loginSaga),
+        yield takeLatest(LOGOUT_REQUEST, logoutSaga)
 }

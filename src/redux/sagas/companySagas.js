@@ -1,7 +1,19 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-import { REGISTER_COMPANY_REQUEST, LIST_COMPANY_REQUEST , DELETE_COMPANY_REQUEST} from '../const/companyConst'
-import { registerCompanySuccess,registerCompanyFailed, listCompanySuccess, listCompanyRequest, deleteCompanySuccess } from '../actions/companyAction'
+import {
+   REGISTER_COMPANY_REQUEST,
+   LIST_COMPANY_REQUEST,
+   DELETE_COMPANY_REQUEST
+}
+   from '../const/companyConst'
+import {
+   registerCompanySuccess,
+   registerCompanyFailed,
+   listCompanySuccess,
+   listCompanyRequest,
+   deleteCompanySuccess
+}
+   from '../actions/companyAction'
 
 const baseUrl = 'https://appprueba.venoudev.com/api/v1/company'
 
@@ -58,10 +70,10 @@ function* deleteCompanySaga(payload) {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
       Accept: 'application/json'
    };
-   const data = yield axios.delete(baseUrl + '/delete/'+payload.id, { headers })
+   const data = yield axios.delete(baseUrl + '/delete/' + payload.id, { headers })
       .then(response => response)
       .catch(err => err.response)
-      console.log(data)
+   console.log(data)
    switch (data.status) {
       case 200:
          console.log(data)
@@ -79,8 +91,8 @@ function* deleteCompanySaga(payload) {
 
 export default function* loginRootSaga() {
    yield takeLatest(REGISTER_COMPANY_REQUEST, registerCompanySaga),
-   yield takeLatest(LIST_COMPANY_REQUEST, listCompanySaga),
-   yield takeLatest(DELETE_COMPANY_REQUEST, deleteCompanySaga)
+      yield takeLatest(LIST_COMPANY_REQUEST, listCompanySaga),
+      yield takeLatest(DELETE_COMPANY_REQUEST, deleteCompanySaga)
 
 
 }

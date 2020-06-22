@@ -1,7 +1,16 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
-import { LOGIN_REQUEST, LOGOUT_REQUEST } from '../const/loginConst'
-import { loginSuccess,loginFailed, logoutSuccess } from '../actions/loginAction'
+import {
+    LOGIN_REQUEST,
+    LOGOUT_REQUEST
+}
+    from '../const/loginConst'
+import {
+    loginSuccess,
+    loginFailed,
+    logoutSuccess
+}
+    from '../actions/loginAction'
 
 const baseUrl = 'https://appprueba.venoudev.com/api/v1/auth'
 

@@ -41,7 +41,7 @@ function AlertDialog(props) {
                             }
                             if(item.code_message === '[DELETED]')
                             {
-                                return <h4 style={{color:'black'}}>La compañia se elimino correctamente!</h4>
+                                return <h4 style={{color:'black'}}>La empresa se elimino correctamente!</h4>
                             }
                            
                         })}

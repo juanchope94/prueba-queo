@@ -1,4 +1,11 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILED, LOGOUT_SUCCESS, CLOSE_MODAL } from '../const/loginConst'
+import {
+    LOGIN_REQUEST,
+    LOGIN_SUCCESS,
+    LOGIN_FAILED,
+    LOGOUT_SUCCESS,
+    CLOSE_MODAL
+}
+    from '../const/loginConst'
 
 
 

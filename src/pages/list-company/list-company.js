@@ -19,7 +19,7 @@ import { forwardRef } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { listCompanyRequest, deleteCompanyRequest } from '../../redux/actions/companyAction'
-import Modal from './../../components/modalCreateCompany/modalCreateCompany'
+import Modal from './../../components/modalCompany/modalCompany'
 
 
 const tableIcons = {

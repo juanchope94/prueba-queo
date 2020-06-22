@@ -8,7 +8,7 @@ import { registerCompanyRequest } from '../../redux/actions/companyAction'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Modal from './../../components/modalCreateCompany/modalCreateCompany'
+import Modal from './../../components/modalCompany/modalCompany'
 
 
 

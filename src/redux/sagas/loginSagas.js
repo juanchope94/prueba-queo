@@ -3,10 +3,8 @@ import axios from 'axios';
 import { LOGIN_REQUEST, LOGOUT_REQUEST } from '../const/loginConst'
 import { loginSuccess, logoutSuccess } from '../actions/loginAction'
 
-const baseUrl = 'https://queoapp.venoudev.com/api/v1/auth'
-const getToken = () => {
-    return localStorage.getItem('token');
-}
+const baseUrl = 'https://appprueba.venoudev.com/api/v1/auth'
+
 
 function* loginSaga(payload) {
 

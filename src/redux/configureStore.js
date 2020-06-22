@@ -1,5 +1,4 @@
 import createSagaMiddleware from 'redux-saga';
-import loginReducer from './store/loginReducer';
 import sagas from './sagas/index';
 import createReducer from './store/indexReducer';
 import { createStore, applyMiddleware, compose } from 'redux';

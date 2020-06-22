@@ -115,7 +115,7 @@ const SignIn = (props) => {
                         >
                             Iniciar sesión
                       </Button>}
-                        {props.tokenLogin !=='' ? <Redirect to='/Dashboard'/> : null}
+                        {props.tokenLogin !=='' ? <Redirect to='/dashboard'/> : null}
                 </form>
                 <Grid container>
                     <Grid item xs>

@@ -53,7 +53,7 @@ function OutlinedTextFields(props) {
         <div  >
             <Modal open={props.open} messages={props.messages}/>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <h1   >Registro empresa</h1>
+                <h1 style={{textAlign:'center'}}  >Registro empresa</h1>
             </div>
             <form onSubmit={handleRegisterSubmit} className={classes.container} autoComplete="off">
 

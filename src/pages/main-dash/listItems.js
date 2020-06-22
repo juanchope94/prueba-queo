@@ -51,7 +51,7 @@ const mainListItems = (props) => {
             <ListItemIcon >
               <AddCircleOutlineIcon />
             </ListItemIcon>
-            <Link to={{ pathname: `/Dashboard/CreateEmployee` }} style={{ textDecoration: "none", color: "black" }}>
+            <Link to={{ pathname: `/dashboard/create_employee` }} style={{ textDecoration: "none", color: "black" }}>
               <ListItemText primary="Crear empleados" />
             </Link>
           </ListItem>
@@ -61,7 +61,7 @@ const mainListItems = (props) => {
             <ListItemIcon >
               <ListIcon />
             </ListItemIcon>
-            <Link to={{ pathname: `/Dashboard/ListEmployees` }} style={{ textDecoration: "none", color: "black" }}>
+            <Link to={{ pathname: `/dashboard/list_employees` }} style={{ textDecoration: "none", color: "black" }}>
               <ListItemText primary="Listar empleados" />
             </Link>
           </ListItem>
@@ -80,7 +80,7 @@ const mainListItems = (props) => {
             <ListItemIcon>
               <AddCircleOutlineIcon />
             </ListItemIcon>
-            <Link to={{ pathname: `/Dashboard/CreateCompany` }} style={{ textDecoration: "none", color: "black" }}>
+            <Link to={{ pathname: `/dashboard/create_company` }} style={{ textDecoration: "none", color: "black" }}>
               <ListItemText primary="Crear empresas" />
             </Link>
           </ListItem>
@@ -90,7 +90,7 @@ const mainListItems = (props) => {
             <ListItemIcon>
               <ListIcon />
             </ListItemIcon>
-            <Link to={{ pathname: `/Dashboard/ListCompanys` }} style={{ textDecoration: "none", color: "black" }}>
+            <Link to={{ pathname: `/dashboard/list_companys` }} style={{ textDecoration: "none", color: "black" }}>
               <ListItemText primary="Listar empresas" />
             </Link>
           </ListItem>

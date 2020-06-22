@@ -34,7 +34,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright ©  '}
-      <a href='https://queoaccess.com/' style={{textDecoration:'none', color:'black'}}>
+      <a href='https://queoaccess.com/' style={{textDecoration:'none', color:'rgba(0, 0, 0, 0.54)'}}>
         Queo
         </a>
       {' ' + new Date().getFullYear()}
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    width: theme.spacing(7),
+    width: theme.spacing(0),
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(0),
     },
@@ -150,7 +150,7 @@ function Dashboard(props) {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            <Link to={{ pathname: `/Dashboard` }} style={{ textDecoration: "none", color: "white" }}>
+            <Link to={{ pathname: `/dashboard` }} style={{ textDecoration: "none", color: "white" }}>
               Dashboard Queo
              </Link>
           </Typography>
@@ -184,11 +184,11 @@ function Dashboard(props) {
             <Grid item xs={12} md={8} lg={12}>
               <Paper className={fixedHeightPaper}>
                 <Switch>
-                  <Route path="/Dashboard" exact component={Chart} />
-                  <Route path="/Dashboard/CreateEmployee" exact component={CreateEmployee} />
-                  <Route path="/Dashboard/ListEmployees" exact component={ListEmployee} />
-                  <Route path="/Dashboard/CreateCompany" exact component={CreateCompany} />
-                  <Route path="/Dashboard/ListCompanys" exact component={ListCompany} />
+                  <Route path="/dashboard" exact component={Chart} />
+                  <Route path="/dashboard/create_employee" exact component={CreateEmployee} />
+                  <Route path="/dashboard/list_employees" exact component={ListEmployee} />
+                  <Route path="/dashboard/create_company" exact component={CreateCompany} />
+                  <Route path="/dashboard/list_companys" exact component={ListCompany} />
                 </Switch>
               </Paper>
             </Grid>

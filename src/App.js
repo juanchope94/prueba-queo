@@ -17,7 +17,7 @@ class App extends Component {
           <BrowserRouter history={history}>
             <Route exact path="/" render={() => <Redirect to="/login" />} />
             <Route path="/login" component={Login} />
-            <Route path="/Dashboard" component={RequiredAuth(Dashboard)} />
+            <Route path="/dashboard" component={RequiredAuth(Dashboard)} />
           </BrowserRouter>
         </PersistGate>
       </Provider >

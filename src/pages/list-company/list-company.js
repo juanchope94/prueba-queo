@@ -1,4 +1,4 @@
-import React, { useEffect,useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import MaterialTable from 'material-table';
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
@@ -19,6 +19,8 @@ import { forwardRef } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { listCompanyRequest } from '../../redux/actions/companyAction'
+import Logo from './../../assets/queoLogo.png'
+
 
 
 const tableIcons = {
@@ -48,7 +50,7 @@ function MaterialTableDemo(props) {
             { title: 'Name', field: 'name' },
             { title: 'Email', field: 'email' },
             { title: 'Website', field: 'website' },
-            { title: 'Logo', field: 'logo', type:<img/> },
+            { title: 'Logo', field: 'logo', type: <img /> },
         ],
         data: [
             { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
@@ -63,14 +65,22 @@ function MaterialTableDemo(props) {
 
     useLayoutEffect(() => {
         props.handleListRequest();
-    },  []);
+    }, []);
 
     return (
         <MaterialTable
             icons={tableIcons}
             title="Lista de empresas"
             columns={state.columns}
+            isLoading={false}
             data={props.companys}
+            detailPanel={Row=> {
+                return (
+                    <div>
+                        <img src={props.companys[Row].logo} ></img>
+                    </div>
+                )
+            }}
             editable={{
                 onRowAdd: newData =>
                     new Promise(resolve => {

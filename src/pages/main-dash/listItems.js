@@ -38,35 +38,6 @@ const mainListItems = (props) => {
   };
   return (
     <div>
-      <ListItem button onClick={handleClick2}>
-        <ListItemIcon style={{ marginRight: '-30px' }}>
-          <WorkIcon />
-        </ListItemIcon>
-        <ListItemText primary="Gestionar empleados" />
-        {open2 ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
-      <Collapse in={open2} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon >
-              <AddCircleOutlineIcon />
-            </ListItemIcon>
-            <Link to={{ pathname: `/dashboard/create_employee` }} style={{ textDecoration: "none", color: "black" }}>
-              <ListItemText primary="Crear empleados" />
-            </Link>
-          </ListItem>
-        </List>
-        <List component="div" disablePadding>
-          <ListItem button className={classes.nested}>
-            <ListItemIcon >
-              <ListIcon />
-            </ListItemIcon>
-            <Link to={{ pathname: `/dashboard/list_employees` }} style={{ textDecoration: "none", color: "black" }}>
-              <ListItemText primary="Listar empleados" />
-            </Link>
-          </ListItem>
-        </List>
-      </Collapse>
       <ListItem button onClick={handleClick}>
         <ListItemIcon style={{ marginRight: '-30px' }}>
           <ApartmentIcon />
@@ -96,6 +67,36 @@ const mainListItems = (props) => {
           </ListItem>
         </List>
       </Collapse>
+      <ListItem button onClick={handleClick2}>
+        <ListItemIcon style={{ marginRight: '-30px' }}>
+          <WorkIcon />
+        </ListItemIcon>
+        <ListItemText primary="Gestionar empleados" />
+        {open2 ? <ExpandLess /> : <ExpandMore />}
+      </ListItem>
+      <Collapse in={open2} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItem button className={classes.nested}>
+            <ListItemIcon >
+              <AddCircleOutlineIcon />
+            </ListItemIcon>
+            <Link to={{ pathname: `/dashboard/create_employee` }} style={{ textDecoration: "none", color: "black" }}>
+              <ListItemText primary="Crear empleados" />
+            </Link>
+          </ListItem>
+        </List>
+        <List component="div" disablePadding>
+          <ListItem button className={classes.nested}>
+            <ListItemIcon >
+              <ListIcon />
+            </ListItemIcon>
+            <Link to={{ pathname: `/dashboard/list_employees` }} style={{ textDecoration: "none", color: "black" }}>
+              <ListItemText primary="Listar empleados" />
+            </Link>
+          </ListItem>
+        </List>
+      </Collapse>
+
 
     </div >
   );

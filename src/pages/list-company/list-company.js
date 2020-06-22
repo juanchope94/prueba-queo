@@ -61,7 +61,9 @@ function MaterialTableDemo(props) {
         ],
     });
 
-  
+    useLayoutEffect(() => {
+        props.handleListRequest();
+    },  []);
 
     return (
         <MaterialTable

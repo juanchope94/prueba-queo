@@ -22,7 +22,7 @@ import Chart from './Chart';
 import CreateEmployee from './../create-employee/create-employee';
 import CreateCompany from './../create-company/create-company';
 import ListEmployee from './../list-employee/list-employee';
-import ListCompany from './../list-company/container';
+import ListCompany from './../list-company/list-company';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { logoutRequest } from '../../redux/actions/loginAction'

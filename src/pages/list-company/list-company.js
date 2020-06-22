@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useLayoutEffect } from 'react';
 import MaterialTable from 'material-table';
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowDownward from '@material-ui/icons/ArrowDownward';
@@ -61,9 +61,7 @@ function MaterialTableDemo(props) {
         ],
     });
 
-    useEffect(() => {
-        props.handleListRequest();
-    });
+  
 
     return (
         <MaterialTable

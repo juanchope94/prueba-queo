@@ -74,12 +74,11 @@ function MaterialTableDemo(props) {
             columns={state.columns}
             isLoading={false}
             data={props.companys}
-            detailPanel={Row=> {
-                return (
-                    <div>
-                        <img src={props.companys[Row].logo} ></img>
-                    </div>
-                )
+            detailPanel={rowData => {
+                console.log(rowData)
+                return <img src={rowData.logo} ></img>
+
+
             }}
             editable={{
                 onRowAdd: newData =>

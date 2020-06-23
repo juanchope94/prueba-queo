@@ -43,6 +43,10 @@ function AlertDialog(props) {
                             {
                                 return <h4 style={{color:'black'}}>La empresa se elimino correctamente!</h4>
                             }
+                            if(item.code_message === '[UPDATED]')
+                            {
+                                return <h4 style={{color:'black'}}>La empresa se actualizo correctamente!</h4>
+                            }
                            
                         })}
           </DialogContentText>

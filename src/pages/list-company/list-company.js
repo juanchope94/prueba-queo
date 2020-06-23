@@ -18,7 +18,7 @@ import ViewColumn from '@material-ui/icons/ViewColumn';
 import { forwardRef } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { listCompanyRequest, deleteCompanyRequest } from '../../redux/actions/companyAction'
+import { listCompanyRequest, deleteCompanyRequest, updateCompanyRequest } from '../../redux/actions/companyAction'
 import Modal from './../../components/modalCompany/modalCompany'
 
 
@@ -105,12 +105,9 @@ function MaterialTableDemo(props) {
                         }),
                     onRowUpdate: (newData, oldData) =>
                         new Promise(resolve => {
-                            setTimeout(() => {
-                                resolve();
-                                const data = [...state.data];
-                                data[data.indexOf(oldData)] = newData;
-                                setState({ ...state, data });
-                            }, 600);
+                            resolve();
+                            props.handleUpdateRequest(oldData.id,newData)
+
                         }),
                     onRowDelete: oldData =>
                         new Promise(resolve => {
@@ -126,7 +123,8 @@ function MaterialTableDemo(props) {
 const mapDispatchToProps = dispatch => (
     {
         handleListRequest: bindActionCreators(listCompanyRequest, dispatch),
-        handleDeleteRequest: bindActionCreators(deleteCompanyRequest, dispatch)
+        handleDeleteRequest: bindActionCreators(deleteCompanyRequest, dispatch),
+        handleUpdateRequest: bindActionCreators(updateCompanyRequest, dispatch)
 
     }
 )
@@ -135,8 +133,8 @@ const mapStateToProps = state => {
     return {
         companys: state.companyReducer.companys,
         loadTab: state.companyReducer.loadTable,
-        open : state.companyReducer.openModal,
-        messages : state.companyReducer.messages
+        open: state.companyReducer.openModal,
+        messages: state.companyReducer.messages
     }
 }
 

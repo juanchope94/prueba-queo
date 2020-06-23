@@ -34,6 +34,20 @@ export const deleteCompanySuccess = (messages) => (
     }
 );
 
+export const updateCompanyRequest = (id,company) => (
+    {
+        type: types.UPDATE_COMPANY_REQUEST,
+        id,
+        company
+    }
+);
+export const updateCompanySuccess = (messages) => (
+    {
+        type: types.UPDATE_COMPANY_SUCCESS,
+        messages
+        
+    }
+);
 
 export const listCompanyRequest = () => (
     {

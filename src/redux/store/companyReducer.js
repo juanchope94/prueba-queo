@@ -5,6 +5,8 @@ import {
     LIST_COMPANY_SUCCESS,
     DELETE_COMPANY_REQUEST,
     DELETE_COMPANY_SUCCESS,
+    UPDATE_COMPANY_REQUEST,
+    UPDATE_COMPANY_SUCCESS,
     CLOSE_MODAL
 } from '../const/companyConst'
 
@@ -42,6 +44,7 @@ export default function companyReducer(state = companyState, action = {}) {
                 ...state,
                 loading: false,
                 openModal: true,
+                loadTable:false,
                 messages: action.messages
 
             }
@@ -57,6 +60,19 @@ export default function companyReducer(state = companyState, action = {}) {
                 loadTable: true
             }
         case DELETE_COMPANY_SUCCESS:
+            return {
+                ...state,
+                loadTable: false,
+                openModal: true,
+                messages: action.messages
+            }
+
+        case UPDATE_COMPANY_REQUEST:
+            return {
+                ...state,
+                loadTable: true
+            }
+        case UPDATE_COMPANY_SUCCESS:
             return {
                 ...state,
                 loadTable: false,

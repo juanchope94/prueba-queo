@@ -3,7 +3,8 @@ import axios from 'axios';
 import {
    REGISTER_COMPANY_REQUEST,
    LIST_COMPANY_REQUEST,
-   DELETE_COMPANY_REQUEST
+   DELETE_COMPANY_REQUEST,
+   UPDATE_COMPANY_REQUEST
 }
    from '../const/companyConst'
 import {
@@ -11,7 +12,8 @@ import {
    registerCompanyFailed,
    listCompanySuccess,
    listCompanyRequest,
-   deleteCompanySuccess
+   deleteCompanySuccess,
+   updateCompanySuccess
 }
    from '../actions/companyAction'
 
@@ -89,10 +91,37 @@ function* deleteCompanySaga(payload) {
 
 }
 
+function* updateCompanySaga(payload) {
+   const headers = {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+      Accept: 'application/json'
+   };
+   const data = yield axios.post(baseUrl + '/update/' + payload.id,
+      { _method: 'PUT', name: payload.company.name, email: payload.company.email, website: payload.company.website },
+      { headers })
+      .then(response => response)
+      .catch(err => err.response)
+   console.log(data)
+   switch (data.status) {
+      case 200:
+         console.log(data)
+         yield put(listCompanyRequest())
+         yield put(updateCompanySuccess(data.data.messages))
+         break;
+      case 400:
+         yield put(registerCompanyFailed(data.data.errors))
+         break;
+      default:
+         break;
+   }
+
+
+}
+
 export default function* loginRootSaga() {
    yield takeLatest(REGISTER_COMPANY_REQUEST, registerCompanySaga),
       yield takeLatest(LIST_COMPANY_REQUEST, listCompanySaga),
-      yield takeLatest(DELETE_COMPANY_REQUEST, deleteCompanySaga)
-
+      yield takeLatest(DELETE_COMPANY_REQUEST, deleteCompanySaga),
+      yield takeLatest(UPDATE_COMPANY_REQUEST, updateCompanySaga)
 
 }

@@ -27,6 +27,18 @@ function AlertDialog(props) {
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
                         {props.messages.map(item=>{
+                             if(item.code_message === '[ERR_REQUIRED]' && item.field === '[email]')
+                             {
+                                 return <h4 style={{color:'black'}}>El email es requerido</h4>
+                             }
+                             if(item.code_message === '[ERR_REQUIRED]'  && item.field === '[name]')
+                             {
+                                 return <h4 style={{color:'black'}}>El nombre es requerido</h4>
+                             }
+                             if(item.code_message === '[ERR_REQUIRED]'  && item.field === '[website]')
+                             {
+                                 return <h4 style={{color:'black'}}>El website es requerido</h4>
+                             }
                             if(item.code_message === '[REGISTERED]')
                             {
                                 return <h4 style={{color:'black'}}>Empresa registrada satisfactoriamente</h4>

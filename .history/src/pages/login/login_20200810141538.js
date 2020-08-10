@@ -6,7 +6,6 @@ import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Logo from "./../../assets/queoLogo.png";
-import Diplomatix from "./../../assets/Diplomatix.png";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -71,7 +70,7 @@ const SignIn = (props) => {
       <Modal open={props.openModal} />
       <CssBaseline />
       <div className={classes.paper}>
-        <img src={Diplomatix} style={{ width: "170px", height: "auto" }} />
+        <img src={Logo} style={{ width: "170px", height: "auto" }} />
 
         <form onSubmit={handleStatusChange} className={classes.form}>
           <TextField
